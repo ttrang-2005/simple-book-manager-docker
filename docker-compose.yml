@@ -1,0 +1,49 @@
+services:
+  # 1. Database MySQL
+  db:
+    image: mysql:8.0
+    container_name: mysql_container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456  # Mật khẩu database
+      MYSQL_DATABASE: quanlysach
+    volumes:
+      - mysql_data:/var/lib/mysql
+      # Tự động chạy file sql khi khởi tạo lần đầu
+      - ./database.sql:/docker-entrypoint-initdb.d/database.sql
+    networks:
+      - app_network
+
+  # 2. Backend (Node.js)
+  server:
+    build: ./backend
+    container_name: server_container
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: db
+      DB_PASSWORD: 123456    # Khớp với pass ở trên
+    depends_on:
+      - db
+    networks:
+      - app_network
+
+  # 3. Frontend (React)
+  client:
+    build: ./books
+    container_name: books_container
+    restart: always
+    ports:
+      - "5173:80"
+    depends_on:
+      - server
+    networks:
+      - app_network
+
+volumes:
+  mysql_data:
+
+networks:
+  app_network:
+    driver: bridge
