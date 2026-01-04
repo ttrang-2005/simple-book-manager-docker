@@ -77,7 +77,7 @@ Nếu bạn muốn chạy từng phần để debug (không dùng Docker), hãy 
 
 **2. Backend (Node.js):**
 ```bash
-cd server
+cd backend
 npm install
 # Lưu ý: Cấu hình lại user/pass database trong file index.js nếu cần
 node index.js
@@ -86,7 +86,7 @@ node index.js
 
 **3. Frontend (React):**
 ```bash
-cd client
+cd books
 npm install
 npm run dev
 ```
