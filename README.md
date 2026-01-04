@@ -97,12 +97,12 @@ npm run dev
 ## 📂 Cấu Trúc Thư Mục
 
 ```
-DuAnSach/
-├── client/                 # Mã nguồn Frontend (React)
+simple-book-manager-docker/
+├── books/                 # Mã nguồn Frontend (React)
 │   ├── src/                # Components, CSS
 │   ├── Dockerfile          # Cấu hình build Docker cho Client
 │   └── nginx.conf          # Cấu hình Nginx server
-├── server/                 # Mã nguồn Backend (Node.js)
+├── backend/                 # Mã nguồn Backend (Node.js)
 │   ├── index.js            # Logic API & Kết nối DB
 │   └── Dockerfile          # Cấu hình build Docker cho Server
 ├── database.sql            # Script tạo bảng và dữ liệu mẫu
